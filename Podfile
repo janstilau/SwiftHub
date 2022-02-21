@@ -6,7 +6,7 @@ inhibit_all_warnings!
 
 target 'SwiftHub' do
     # Pods for SwiftHub
-
+    
     # Networking
     pod 'Moya/RxSwift', '~> 15.0'  # https://github.com/Moya/Moya
     pod 'Apollo', '0.50.0'  # https://github.com/apollographql/apollo-ios
@@ -32,7 +32,7 @@ target 'SwiftHub' do
 
     # Tools
     pod 'R.swift', '~> 6.0'  # https://github.com/mac-cain13/R.swift
-    pod 'SwiftLint', '0.46.2'  # https://github.com/realm/SwiftLint
+#    pod 'SwiftLint', '0.46.2'  # https://github.com/realm/SwiftLint
 
     # Keychain
     pod 'KeychainAccess', '~> 4.0'  # https://github.com/kishikawakatsumi/KeychainAccess

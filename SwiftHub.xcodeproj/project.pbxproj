@@ -249,6 +249,8 @@
 		A0E2B0972108B024000DA282 /* RepositoryForks.json in Resources */ = {isa = PBXBuildFile; fileRef = A0E2B0962108B024000DA282 /* RepositoryForks.json */; };
 		A0ED264820F76A65004E8137 /* LoginViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = A0ED264720F76A65004E8137 /* LoginViewModel.swift */; };
 		A0ED264A20F76A7D004E8137 /* LoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A0ED264920F76A7D004E8137 /* LoginViewController.swift */; };
+		AA3CA0E627C387920025E379 /* UIView+Debug.m in Sources */ = {isa = PBXBuildFile; fileRef = AA3CA0E127C387920025E379 /* UIView+Debug.m */; };
+		AA3CA0E727C387920025E379 /* UIColor+Debug.m in Sources */ = {isa = PBXBuildFile; fileRef = AA3CA0E227C387920025E379 /* UIColor+Debug.m */; };
 		C762C6231E1D414B00C09EBD /* R.generated.swift in Sources */ = {isa = PBXBuildFile; fileRef = C762C6221E1D414B00C09EBD /* R.generated.swift */; };
 		C762C6251E1D417C00C09EBD /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = C762C6241E1D417C00C09EBD /* Assets.xcassets */; };
 		C762C65F1E1D559000C09EBD /* BarButtonItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = C762C6501E1D559000C09EBD /* BarButtonItem.swift */; };
@@ -573,6 +575,11 @@
 		A0E2B0962108B024000DA282 /* RepositoryForks.json */ = {isa = PBXFileReference; lastKnownFileType = text.json; path = RepositoryForks.json; sourceTree = "<group>"; };
 		A0ED264720F76A65004E8137 /* LoginViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginViewModel.swift; sourceTree = "<group>"; };
 		A0ED264920F76A7D004E8137 /* LoginViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginViewController.swift; sourceTree = "<group>"; };
+		AA3CA0E127C387920025E379 /* UIView+Debug.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIView+Debug.m"; sourceTree = "<group>"; };
+		AA3CA0E227C387920025E379 /* UIColor+Debug.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIColor+Debug.m"; sourceTree = "<group>"; };
+		AA3CA0E327C387920025E379 /* UIView+Debug.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIView+Debug.h"; sourceTree = "<group>"; };
+		AA3CA0E427C387920025E379 /* UIColor+Debug.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIColor+Debug.h"; sourceTree = "<group>"; };
+		AA3CA0E527C387920025E379 /* MCDebug.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MCDebug.h; sourceTree = "<group>"; };
 		AB30C56D3A94C8B749FE468F /* Pods-SwiftHubUITests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-SwiftHubUITests.debug.xcconfig"; path = "Pods/Target Support Files/Pods-SwiftHubUITests/Pods-SwiftHubUITests.debug.xcconfig"; sourceTree = "<group>"; };
 		C762C6221E1D414B00C09EBD /* R.generated.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = R.generated.swift; sourceTree = "<group>"; };
 		C762C6241E1D417C00C09EBD /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
@@ -1034,6 +1041,7 @@
 				075AB1A920F2988F00B7E923 /* Pods-SwiftHub-acknowledgements.plist */,
 				07A4ADB121E89899001D198F /* PRIVACY_POLICY.md */,
 				07FC33841FFFE54800D53888 /* README.md */,
+				AA3CA0E027C387920025E379 /* Debug */,
 			);
 			path = Configs;
 			sourceTree = "<group>";
@@ -1309,6 +1317,19 @@
 			);
 			path = Login;
 			sourceTree = "<group>";
+		};
+		AA3CA0E027C387920025E379 /* Debug */ = {
+			isa = PBXGroup;
+			children = (
+				AA3CA0E127C387920025E379 /* UIView+Debug.m */,
+				AA3CA0E227C387920025E379 /* UIColor+Debug.m */,
+				AA3CA0E327C387920025E379 /* UIView+Debug.h */,
+				AA3CA0E427C387920025E379 /* UIColor+Debug.h */,
+				AA3CA0E527C387920025E379 /* MCDebug.h */,
+			);
+			name = Debug;
+			path = SwiftHub/Debug;
+			sourceTree = SOURCE_ROOT;
 		};
 		BCC52B8EA733FE45674BCE43 /* Pods */ = {
 			isa = PBXGroup;
@@ -2023,6 +2044,7 @@
 				A034AF7B21528108004C310B /* NotificationCellViewModel.swift in Sources */,
 				0716602121CFB1E000B5827C /* SourceViewModel.swift in Sources */,
 				074DBBEA24489E750062B35F /* CodetabsApi.swift in Sources */,
+				AA3CA0E627C387920025E379 /* UIView+Debug.m in Sources */,
 				07F9E464223401F30012BA6D /* API.swift in Sources */,
 				07FC337D1FFFE4E300D53888 /* AnalyticsManager.swift in Sources */,
 				0752F48C21C8D9BA00A30BF2 /* TrendingUserCell.swift in Sources */,
@@ -2053,6 +2075,7 @@
 				0752F48821C8D9A800A30BF2 /* TrendingRepositoryCell.swift in Sources */,
 				075E75E521D2C6B200213683 /* PickerView.swift in Sources */,
 				07D46E5E2192212B008E5369 /* ContentCellViewModel.swift in Sources */,
+				AA3CA0E727C387920025E379 /* UIColor+Debug.m in Sources */,
 				A0ED264820F76A65004E8137 /* LoginViewModel.swift in Sources */,
 				C762C65F1E1D559000C09EBD /* BarButtonItem.swift in Sources */,
 				07241D1321B175FE00F800BD /* CommitsViewModel.swift in Sources */,
