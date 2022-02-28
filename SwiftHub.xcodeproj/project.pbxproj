@@ -175,7 +175,6 @@
 		07FC33871FFFE68800D53888 /* Api.swift in Sources */ = {isa = PBXBuildFile; fileRef = 07FC33861FFFE68800D53888 /* Api.swift */; };
 		07FDBC0B223D090C00D72AFC /* Repository.graphql in Resources */ = {isa = PBXBuildFile; fileRef = 07FDBC0A223D090C00D72AFC /* Repository.graphql */; };
 		10FF001614268611DEEC3698 /* Pods_SwiftHub.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3E6D5D7DF286987ECF4F8FDD /* Pods_SwiftHub.framework */; };
-		21C12854A33FB761C193427F /* Pods_SwiftHubUITests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 7DCB88A802BEA0D429184566 /* Pods_SwiftHubUITests.framework */; };
 		A003B32A25A318360061EB1B /* FirebaseAnalytics in Frameworks */ = {isa = PBXBuildFile; productRef = A003B32925A318360061EB1B /* FirebaseAnalytics */; };
 		A003B32C25A318360061EB1B /* FirebaseCrashlytics in Frameworks */ = {isa = PBXBuildFile; productRef = A003B32B25A318360061EB1B /* FirebaseCrashlytics */; };
 		A00871CF21A6E2BD006E5A2B /* Comment.swift in Sources */ = {isa = PBXBuildFile; fileRef = A00871CE21A6E2BD006E5A2B /* Comment.swift */; };
@@ -204,7 +203,6 @@
 		A094995B1E1D1CB600EFDE29 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = A09499591E1D1CB600EFDE29 /* Main.storyboard */; };
 		A09499601E1D1CB700EFDE29 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = A094995E1E1D1CB700EFDE29 /* LaunchScreen.storyboard */; };
 		A094996B1E1D1CB700EFDE29 /* SwiftHubTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = A094996A1E1D1CB700EFDE29 /* SwiftHubTests.swift */; };
-		A09499761E1D1CB700EFDE29 /* SwiftHubUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = A09499751E1D1CB700EFDE29 /* SwiftHubUITests.swift */; };
 		A09DE8A120E79EEC00F6F2BF /* Repository.swift in Sources */ = {isa = PBXBuildFile; fileRef = A09DE8A020E79EEC00F6F2BF /* Repository.swift */; };
 		A09DE8A320E7A0C500F6F2BF /* License.swift in Sources */ = {isa = PBXBuildFile; fileRef = A09DE8A220E7A0C500F6F2BF /* License.swift */; };
 		A09DE8A520E7A15A00F6F2BF /* User.swift in Sources */ = {isa = PBXBuildFile; fileRef = A09DE8A420E7A15A00F6F2BF /* User.swift */; };
@@ -226,7 +224,6 @@
 		A09DE8DD20E7C82E00F6F2BF /* SearchBar.swift in Sources */ = {isa = PBXBuildFile; fileRef = A09DE8DC20E7C82E00F6F2BF /* SearchBar.swift */; };
 		A09DE8DF20E7CDE600F6F2BF /* SearchSection.swift in Sources */ = {isa = PBXBuildFile; fileRef = A09DE8DE20E7CDE600F6F2BF /* SearchSection.swift */; };
 		A09DE8E120EB9B2500F6F2BF /* SlideImageView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A09DE8E020EB9B2500F6F2BF /* SlideImageView.swift */; };
-		A09DE8E320EBB75700F6F2BF /* SnapshotHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = A09DE8E220EBB75700F6F2BF /* SnapshotHelper.swift */; };
 		A0AEB3A7220D8FC300A4B2AA /* UsersViewModelTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = A0AEB3A6220D8FC300A4B2AA /* UsersViewModelTests.swift */; };
 		A0CE88B621C28D9200C4C0E5 /* EmptyArray.json in Resources */ = {isa = PBXBuildFile; fileRef = A0CE88B521C28D9200C4C0E5 /* EmptyArray.json */; };
 		A0CE88B821C28DA700C4C0E5 /* EmptyObject.json in Resources */ = {isa = PBXBuildFile; fileRef = A0CE88B721C28DA700C4C0E5 /* EmptyObject.json */; };
@@ -285,13 +282,6 @@
 
 /* Begin PBXContainerItemProxy section */
 		A09499671E1D1CB700EFDE29 /* PBXContainerItemProxy */ = {
-			isa = PBXContainerItemProxy;
-			containerPortal = A094994A1E1D1CB600EFDE29 /* Project object */;
-			proxyType = 1;
-			remoteGlobalIDString = A09499511E1D1CB600EFDE29;
-			remoteInfo = SwiftHub;
-		};
-		A09499721E1D1CB700EFDE29 /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
 			containerPortal = A094994A1E1D1CB600EFDE29 /* Project object */;
 			proxyType = 1;
@@ -528,7 +518,6 @@
 		A09499661E1D1CB700EFDE29 /* SwiftHubTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = SwiftHubTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		A094996A1E1D1CB700EFDE29 /* SwiftHubTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SwiftHubTests.swift; sourceTree = "<group>"; };
 		A094996C1E1D1CB700EFDE29 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		A09499711E1D1CB700EFDE29 /* SwiftHubUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = SwiftHubUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		A09499751E1D1CB700EFDE29 /* SwiftHubUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SwiftHubUITests.swift; sourceTree = "<group>"; };
 		A09499771E1D1CB700EFDE29 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		A09DE8A020E79EEC00F6F2BF /* Repository.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Repository.swift; sourceTree = "<group>"; };
@@ -628,14 +617,6 @@
 			buildActionMask = 2147483647;
 			files = (
 				D01F88DF3951CD64200F8EFA /* Pods_SwiftHubTests.framework in Frameworks */,
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
-		A094996E1E1D1CB700EFDE29 /* Frameworks */ = {
-			isa = PBXFrameworksBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-				21C12854A33FB761C193427F /* Pods_SwiftHubUITests.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -1112,7 +1093,6 @@
 			children = (
 				A09499521E1D1CB600EFDE29 /* SwiftHub.app */,
 				A09499661E1D1CB700EFDE29 /* SwiftHubTests.xctest */,
-				A09499711E1D1CB700EFDE29 /* SwiftHubUITests.xctest */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -1506,25 +1486,6 @@
 			productReference = A09499661E1D1CB700EFDE29 /* SwiftHubTests.xctest */;
 			productType = "com.apple.product-type.bundle.unit-test";
 		};
-		A09499701E1D1CB700EFDE29 /* SwiftHubUITests */ = {
-			isa = PBXNativeTarget;
-			buildConfigurationList = A09499801E1D1CB700EFDE29 /* Build configuration list for PBXNativeTarget "SwiftHubUITests" */;
-			buildPhases = (
-				DB933434F95D904BFAF8E8A5 /* [CP] Check Pods Manifest.lock */,
-				A094996D1E1D1CB700EFDE29 /* Sources */,
-				A094996E1E1D1CB700EFDE29 /* Frameworks */,
-				A094996F1E1D1CB700EFDE29 /* Resources */,
-			);
-			buildRules = (
-			);
-			dependencies = (
-				A09499731E1D1CB700EFDE29 /* PBXTargetDependency */,
-			);
-			name = SwiftHubUITests;
-			productName = SwiftHubUITests;
-			productReference = A09499711E1D1CB700EFDE29 /* SwiftHubUITests.xctest */;
-			productType = "com.apple.product-type.bundle.ui-testing";
-		};
 /* End PBXNativeTarget section */
 
 /* Begin PBXProject section */
@@ -1541,12 +1502,6 @@
 						ProvisioningStyle = Automatic;
 					};
 					A09499651E1D1CB700EFDE29 = {
-						CreatedOnToolsVersion = 8.2;
-						LastSwiftMigration = 1130;
-						ProvisioningStyle = Automatic;
-						TestTargetID = A09499511E1D1CB600EFDE29;
-					};
-					A09499701E1D1CB700EFDE29 = {
 						CreatedOnToolsVersion = 8.2;
 						LastSwiftMigration = 1130;
 						ProvisioningStyle = Automatic;
@@ -1577,7 +1532,6 @@
 			targets = (
 				A09499511E1D1CB600EFDE29 /* SwiftHub */,
 				A09499651E1D1CB700EFDE29 /* SwiftHubTests */,
-				A09499701E1D1CB700EFDE29 /* SwiftHubUITests */,
 			);
 		};
 /* End PBXProject section */
@@ -1665,13 +1619,6 @@
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 		A09499641E1D1CB700EFDE29 /* Resources */ = {
-			isa = PBXResourcesBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
-		A094996F1E1D1CB700EFDE29 /* Resources */ = {
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
@@ -1886,24 +1833,6 @@
 			name = "[CP] Check Pods Manifest.lock";
 			outputPaths = (
 				"$(DERIVED_FILE_DIR)/Pods-SwiftHub-checkManifestLockResult.txt",
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-			shellPath = /bin/sh;
-			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
-			showEnvVarsInLog = 0;
-		};
-		DB933434F95D904BFAF8E8A5 /* [CP] Check Pods Manifest.lock */ = {
-			isa = PBXShellScriptBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			inputPaths = (
-				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
-				"${PODS_ROOT}/Manifest.lock",
-			);
-			name = "[CP] Check Pods Manifest.lock";
-			outputPaths = (
-				"$(DERIVED_FILE_DIR)/Pods-SwiftHubUITests-checkManifestLockResult.txt",
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
@@ -2138,15 +2067,6 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
-		A094996D1E1D1CB700EFDE29 /* Sources */ = {
-			isa = PBXSourcesBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-				A09499761E1D1CB700EFDE29 /* SwiftHubUITests.swift in Sources */,
-				A09DE8E320EBB75700F6F2BF /* SnapshotHelper.swift in Sources */,
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
 /* End PBXSourcesBuildPhase section */
 
 /* Begin PBXTargetDependency section */
@@ -2154,11 +2074,6 @@
 			isa = PBXTargetDependency;
 			target = A09499511E1D1CB600EFDE29 /* SwiftHub */;
 			targetProxy = A09499671E1D1CB700EFDE29 /* PBXContainerItemProxy */;
-		};
-		A09499731E1D1CB700EFDE29 /* PBXTargetDependency */ = {
-			isa = PBXTargetDependency;
-			target = A09499511E1D1CB600EFDE29 /* SwiftHub */;
-			targetProxy = A09499721E1D1CB700EFDE29 /* PBXContainerItemProxy */;
 		};
 /* End PBXTargetDependency section */
 
@@ -2361,6 +2276,7 @@
 			baseConfigurationReference = 3843260FF1EFDD3029A69CCB /* Pods-SwiftHubTests.debug.xcconfig */;
 			buildSettings = {
 				BUNDLE_LOADER = "$(TEST_HOST)";
+				DEVELOPMENT_TEAM = GAJJ4F72ZK;
 				INFOPLIST_FILE = SwiftHubTests/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
@@ -2379,6 +2295,7 @@
 			baseConfigurationReference = 79F049DC97D19D14F28BF40A /* Pods-SwiftHubTests.release.xcconfig */;
 			buildSettings = {
 				BUNDLE_LOADER = "$(TEST_HOST)";
+				DEVELOPMENT_TEAM = GAJJ4F72ZK;
 				INFOPLIST_FILE = SwiftHubTests/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
@@ -2389,40 +2306,6 @@
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 5.0;
 				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/SwiftHub.app/SwiftHub";
-			};
-			name = Release;
-		};
-		A09499811E1D1CB700EFDE29 /* Debug */ = {
-			isa = XCBuildConfiguration;
-			baseConfigurationReference = AB30C56D3A94C8B749FE468F /* Pods-SwiftHubUITests.debug.xcconfig */;
-			buildSettings = {
-				INFOPLIST_FILE = SwiftHubUITests/Info.plist;
-				LD_RUNPATH_SEARCH_PATHS = (
-					"$(inherited)",
-					"@executable_path/Frameworks",
-					"@loader_path/Frameworks",
-				);
-				PRODUCT_BUNDLE_IDENTIFIER = com.public.SwiftHubUITests;
-				PRODUCT_NAME = "$(TARGET_NAME)";
-				SWIFT_VERSION = 5.0;
-				TEST_TARGET_NAME = SwiftHub;
-			};
-			name = Debug;
-		};
-		A09499821E1D1CB700EFDE29 /* Release */ = {
-			isa = XCBuildConfiguration;
-			baseConfigurationReference = 3796635402BD18001EDA5A16 /* Pods-SwiftHubUITests.release.xcconfig */;
-			buildSettings = {
-				INFOPLIST_FILE = SwiftHubUITests/Info.plist;
-				LD_RUNPATH_SEARCH_PATHS = (
-					"$(inherited)",
-					"@executable_path/Frameworks",
-					"@loader_path/Frameworks",
-				);
-				PRODUCT_BUNDLE_IDENTIFIER = com.public.SwiftHubUITests;
-				PRODUCT_NAME = "$(TARGET_NAME)";
-				SWIFT_VERSION = 5.0;
-				TEST_TARGET_NAME = SwiftHub;
 			};
 			name = Release;
 		};
@@ -2452,15 +2335,6 @@
 			buildConfigurations = (
 				A094997E1E1D1CB700EFDE29 /* Debug */,
 				A094997F1E1D1CB700EFDE29 /* Release */,
-			);
-			defaultConfigurationIsVisible = 0;
-			defaultConfigurationName = Release;
-		};
-		A09499801E1D1CB700EFDE29 /* Build configuration list for PBXNativeTarget "SwiftHubUITests" */ = {
-			isa = XCConfigurationList;
-			buildConfigurations = (
-				A09499811E1D1CB700EFDE29 /* Debug */,
-				A09499821E1D1CB700EFDE29 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;

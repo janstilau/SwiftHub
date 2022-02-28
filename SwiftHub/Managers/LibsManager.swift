@@ -35,25 +35,30 @@ typealias DropDownView = DropDown
 
 /// The manager class for configuring all libraries used in app.
 class LibsManager: NSObject {
-
+    
     /// The default singleton instance.
     static let shared = LibsManager()
-
+    
+    // 一个, 全局的 Publisher.
+    //
     let bannersEnabled = BehaviorRelay(value: UserDefaults.standard.bool(forKey: Configs.UserDefaultsKeys.bannersEnabled))
-
+    
     private override init() {
         super.init()
-
+        
+        // 在初始化的时候, 读取数据, 给 bannersEnabled 进行初值的赋值
         if UserDefaults.standard.object(forKey: Configs.UserDefaultsKeys.bannersEnabled) == nil {
             bannersEnabled.accept(true)
         }
-
-        bannersEnabled.skip(1).subscribe(onNext: { (enabled) in
+        
+        // bannersEnabled 注册了后续变化的存储操作. skip 1 为的是 Load 操作触发存储. 
+        bannersEnabled.skip(1).subscribe(onNext: {
+            (enabled) in
             UserDefaults.standard.set(enabled, forKey: Configs.UserDefaultsKeys.bannersEnabled)
             analytics.set(.adsEnabled(value: enabled))
         }).disposed(by: rx.disposeBag)
     }
-
+    
     func setupLibs(with window: UIWindow? = nil) {
         let libsManager = LibsManager.shared
         libsManager.setupCocoaLumberjack()
@@ -66,11 +71,11 @@ class LibsManager: NSObject {
         libsManager.setupDropDown()
         libsManager.setupToast()
     }
-
+    
     func setupTheme() {
         UIApplication.shared.theme.statusBarStyle = themeService.attribute { $0.statusBarStyle }
     }
-
+    
     func setupDropDown() {
         themeService.typeStream.subscribe(onNext: { (themeType) in
             let theme = themeType.associatedObject
@@ -81,7 +86,7 @@ class LibsManager: NSObject {
             DropDown.appearance().separatorColor = theme.separator
         }).disposed(by: rx.disposeBag)
     }
-
+    
     func setupToast() {
         ToastManager.shared.isTapToDismissEnabled = true
         ToastManager.shared.position = .top
@@ -91,7 +96,7 @@ class LibsManager: NSObject {
         style.imageSize = CGSize(width: 20, height: 20)
         ToastManager.shared.style = style
     }
-
+    
     func setupKafkaRefresh() {
         if let defaults = KafkaRefreshDefaults.standard() {
             defaults.headDefaultStyle = .replicatorAllen
@@ -99,22 +104,22 @@ class LibsManager: NSObject {
             defaults.theme.themeColor = themeService.attribute { $0.secondary }
         }
     }
-
+    
     func setupKeyboardManager() {
         IQKeyboardManager.shared.enable = true
     }
-
+    
     func setupKingfisher() {
         // Set maximum disk cache size for default cache. Default value is 0, which means no limit.
         ImageCache.default.diskStorage.config.sizeLimit = UInt(500 * 1024 * 1024) // 500 MB
-
+        
         // Set longest time duration of the cache being stored in disk. Default value is 1 week
         ImageCache.default.diskStorage.config.expiration = .days(7) // 1 week
-
+        
         // Set timeout duration for default image downloader. Default value is 15 sec.
         ImageDownloader.default.downloadTimeout = 15.0 // 15 sec
     }
-
+    
     func setupCocoaLumberjack() {
         DDLog.add(DDOSLogger.sharedInstance)
         let fileLogger: DDFileLogger = DDFileLogger() // File Logger
@@ -122,37 +127,37 @@ class LibsManager: NSObject {
         fileLogger.logFileManager.maximumNumberOfLogFiles = 7
         DDLog.add(fileLogger)
     }
-
+    
     func setupFLEX() {
-        #if DEBUG
+#if DEBUG
         FLEXManager.shared.isNetworkDebuggingEnabled = true
-        #endif
+#endif
     }
-
+    
     func setupAnalytics() {
         FirebaseApp.configure()
         Mixpanel.initialize(token: Keys.mixpanel.apiKey)
         FirebaseConfiguration.shared.setLoggerLevel(.min)
     }
-
+    
     func setupAds() {
         GADMobileAds.sharedInstance().start(completionHandler: nil)
     }
 }
 
 extension LibsManager {
-
+    
     func showFlex() {
-        #if DEBUG
+#if DEBUG
         FLEXManager.shared.showExplorer()
         analytics.log(.flexOpened)
-        #endif
+#endif
     }
-
+    
     func removeKingfisherCache() -> Observable<Void> {
         return ImageCache.default.rx.clearCache()
     }
-
+    
     func kingfisherCacheSize() -> Observable<Int> {
         return ImageCache.default.rx.retrieveCacheSize()
     }

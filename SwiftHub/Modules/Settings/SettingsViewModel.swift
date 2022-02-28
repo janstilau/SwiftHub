@@ -40,6 +40,9 @@ class SettingsViewModel: ViewModel, ViewModelType {
         bannerEnabled = BehaviorRelay(value: LibsManager.shared.bannersEnabled.value)
         nightModeEnabled = BehaviorRelay(value: ThemeType.currentTheme().isDark)
         super.init(provider: provider)
+        
+        // bannerEnabled 的改变, 会重复啊 LibsManager.shared.bannersEnabled 的改变,
+        // LibsManager.shared.bannersEnabled 的改变, 会触发它的存储逻辑, 以及各个 VC 上的 UI 改动. 
         bannerEnabled.bind(to: LibsManager.shared.bannersEnabled).disposed(by: rx.disposeBag)
     }
 

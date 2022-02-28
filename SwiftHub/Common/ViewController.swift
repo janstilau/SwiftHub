@@ -186,6 +186,8 @@ class ViewController: UIViewController, Navigatable {
         navigationItem.backBarButtonItem = backBarButton
         
         bannerView.load(GADRequest())
+        
+        // 直接使用 LibsManager.shared.bannersEnabled 来注册 Banner View 的事件. 
         LibsManager.shared.bannersEnabled.asDriver().drive(onNext: { [weak self] (enabled) in
             guard let self = self else { return }
             self.bannerView.removeFromSuperview()
