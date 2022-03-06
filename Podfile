@@ -14,7 +14,7 @@ target 'SwiftHub' do
     # Rx Extensions
     pod 'RxDataSources', '~> 5.0'  # https://github.com/RxSwiftCommunity/RxDataSources
     pod 'RxSwiftExt', '~> 6.0'  # https://github.com/RxSwiftCommunity/RxSwiftExt
-    pod 'RxSwift', :path=>'localpods/RxSwift'
+    pod 'RxSwift', :path => 'localpods/RxSwift'
     pod 'NSObject+Rx', '~> 5.0'  # https://github.com/RxSwiftCommunity/NSObject-Rx
     pod 'RxViewController', '~> 2.0'  # https://github.com/devxoul/RxViewController
     pod 'RxGesture', '~> 4.0'  # https://github.com/RxSwiftCommunity/RxGesture

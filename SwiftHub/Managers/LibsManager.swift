@@ -38,11 +38,6 @@ class LibsManager: NSObject {
     
     static let shared = LibsManager()
     
-    /*
-     一个全局的 Publisher.
-     初值使用 UserDefaults.standard.bool(forKey: Configs.UserDefaultsKeys.bannersEnabled) 进行初始化.
-     每次, 这个 Publisher 改变值, 都会触发它的 Observer.
-     */
     let bannersEnabled = BehaviorRelay(value: UserDefaults.standard.bool(forKey: Configs.UserDefaultsKeys.bannersEnabled))
     
     private override init() {
@@ -52,15 +47,13 @@ class LibsManager: NSObject {
         if UserDefaults.standard.object(forKey: Configs.UserDefaultsKeys.bannersEnabled) == nil {
             bannersEnabled.accept(true)
         }
-        // Skip 1 的原因, 是读取的动作不应该重复序列化.
-        // 后续的变化, 都应该进行序列化.
+        
         /*
-         如果, 使用命令式的方式, 需要不断的使用 archive 的调用, 在任何会改变 bannersEnabled 的地方. 现在, 逻辑都集中在了一起.
+         这里注册的是, 序列化的动作. 任何 bannersEnabled 的改变, 都会触发下面的序列化的动作.
          */
         bannersEnabled.skip(1).subscribe(onNext: {
             (enabled) in
             UserDefaults.standard.set(enabled, forKey: Configs.UserDefaultsKeys.bannersEnabled)
-            analytics.set(.adsEnabled(value: enabled))
         }).disposed(by: rx.disposeBag)
     }
     
