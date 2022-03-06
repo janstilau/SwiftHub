@@ -12,6 +12,7 @@ class SettingCell: DefaultTableViewCell {
 
     override func makeUI() {
         super.makeUI()
+        
         leftImageView.contentMode = .center
         leftImageView.cornerRadius = 0
         leftImageView.snp.updateConstraints { (make) in

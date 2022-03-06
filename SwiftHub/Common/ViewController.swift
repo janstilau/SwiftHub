@@ -50,15 +50,16 @@ class ViewController: UIViewController, Navigatable {
     var emptyDataSetImage = R.image.image_no_result()
     var emptyDataSetImageTintColor = BehaviorRelay<UIColor?>(value: nil)
     
+    // 语言切换的 Signal.
+    /*
+     1. 影响到了空 TableView 的显示
+     2. 各个业务模块, 注册自己的业务相关的变化.
+     
+     一个信号的发出, 到底影响到了哪些, 是在业务模块中, 各个信号的使用中自己组织的.
+     信号发出逻辑的编写者, 不用思考后续的处理, 也不会管理注册监听机制. 
+     */
     let languageChanged = BehaviorRelay<Void>(value: ())
     
-    // 原本的事件处理, 从触发对应的方法, 变为了信号的触发.
-    // 信号触发后的操作, 可以在各个地方, 进行信号注册来进行绑定.
-    // 这种发射信号的方式, 带来的便利性就是, 带来了 1 对多的监听者机制.
-    
-    /*
-        PublishSubject<Void>() 这种方式, 就是想要接受通知, 不需要携带数据.
-     */
     let orientationEvent = PublishSubject<Void>()
     let motionShakeEvent = PublishSubject<Void>()
     
@@ -89,9 +90,10 @@ class ViewController: UIViewController, Navigatable {
         return view
     }()
     
+    // 直接在懒加载的时候, 完成了 View 的添加工作, 不太好.
+    // ContentView 是全贴合到 VC 的 View 上面的.
     lazy var contentView: View = {
         let view = View()
-        //        view.hero.id = "CententView"
         self.view.addSubview(view)
         view.snp.makeConstraints { (make) in
             make.edges.equalTo(self.view.safeAreaLayoutGuide)
@@ -99,6 +101,7 @@ class ViewController: UIViewController, Navigatable {
         return view
     }()
     
+    // StackView 是全贴合到 contentView 的上面的.
     lazy var stackView: StackView = {
         let subviews: [UIView] = []
         let view = StackView(arrangedSubviews: subviews)
@@ -113,7 +116,6 @@ class ViewController: UIViewController, Navigatable {
     override public func viewDidLoad() {
         super.viewDidLoad()
         
-        // Do any additional setup after loading the view.
         makeUI()
         bindViewModel()
         
@@ -143,7 +145,7 @@ class ViewController: UIViewController, Navigatable {
                 logDebug("Motion Status changed")
             }).disposed(by: rx.disposeBag)
         
-        // Observe application did change language notification
+        // Noti 的 Post, 会引起 languageChanged 的信号发送,
         NotificationCenter.default
             .rx.notification(NSNotification.Name(LCLLanguageChangeNotification))
             .subscribe { [weak self] (event) in
@@ -226,6 +228,7 @@ class ViewController: UIViewController, Navigatable {
         viewModel?.loading.asObservable().bind(to: isLoading).disposed(by: rx.disposeBag)
         viewModel?.parsedError.asObservable().bind(to: error).disposed(by: rx.disposeBag)
         
+        // languageChanged 信号发送, 会导致 emptyDataSetTitle 值的变化, 而这个值, 是空 TableView 的显示.
         languageChanged.subscribe(onNext: { [weak self] () in
             self?.emptyDataSetTitle = R.string.localizable.commonNoResults.key.localized()
         }).disposed(by: rx.disposeBag)

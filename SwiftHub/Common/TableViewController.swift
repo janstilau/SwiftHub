@@ -86,9 +86,9 @@ extension TableViewController {
 
     func deselectSelectedRow() {
         if let selectedIndexPaths = tableView.indexPathsForSelectedRows {
-            selectedIndexPaths.forEach({ (indexPath) in
+            selectedIndexPaths.forEach { indexPath in
                 tableView.deselectRow(at: indexPath, animated: false)
-            })
+            }
         }
     }
 }

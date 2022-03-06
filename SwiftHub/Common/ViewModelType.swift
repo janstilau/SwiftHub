@@ -11,7 +11,12 @@ import RxSwift
 import RxCocoa
 import ObjectMapper
 
+/*
+ 信号 Publisher, 会有一个组合的过程. 在该 App 里面, 将这个过程统一了.
+ 每一个 ViewModel, 都会提供一个 Transform, 按照自己的逻辑, 进行信号的加工处理. 
+ */
 protocol ViewModelType {
+    
     associatedtype Input
     associatedtype Output
 
@@ -52,10 +57,5 @@ class ViewModel: NSObject {
         parsedError.subscribe(onNext: { (error) in
             logError("\(error)")
         }).disposed(by: rx.disposeBag)
-    }
-
-    deinit {
-        logDebug("\(type(of: self)): Deinited")
-        logResourcesCount()
     }
 }

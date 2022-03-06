@@ -8,9 +8,11 @@
 
 import RxSwift
 
-/// BehaviorRelay is a wrapper for `BehaviorSubject`.
-///
-/// Unlike `BehaviorSubject` it can't terminate with error or completed.
+/*
+ 里面, 包装一个 BehaviorSubject, 真正进行信号发射的, 还是 BehaviorSubject.
+ 因为 BehaviorSubject 是内部实现, 所以控制了 BehaviorSubject 的输入数据, 不会有 error 事件.
+ 算作是 BehaviorSubject 的适配器. 
+ */
 public final class BehaviorRelay<Element>: ObservableType {
     private let subject: BehaviorSubject<Element>
 

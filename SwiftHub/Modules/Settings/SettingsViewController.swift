@@ -18,12 +18,6 @@ private let repositoryReuseIdentifier = R.reuseIdentifier.repositoryCell.identif
 
 class SettingsViewController: TableViewController {
 
-    override func viewDidLoad() {
-        super.viewDidLoad()
-
-        // Do any additional setup after loading the view.
-    }
-
     override func makeUI() {
         super.makeUI()
 
@@ -35,12 +29,18 @@ class SettingsViewController: TableViewController {
         tableView.register(R.nib.settingSwitchCell)
         tableView.register(R.nib.userCell)
         tableView.register(R.nib.repositoryCell)
+        
         tableView.headRefreshControl = nil
         tableView.footRefreshControl = nil
     }
 
+    /*
+        Vc 里面, BindViewModel 做的事情, 就是建立 Model 变化之后, 到 View 之间的映射关系.
+        这是 Controller 的责任的一部分.
+     */
     override func bindViewModel() {
         super.bindViewModel()
+        
         guard let viewModel = viewModel as? SettingsViewModel else { return }
 
         let refresh = Observable.of(rx.viewWillAppear.mapToVoid(), languageChanged.asObservable()).merge()

@@ -13,6 +13,7 @@ public protocol HasDisposeBag: class {
 
 extension HasDisposeBag {
     
+    // objc_sync_enter 就是原本的 @synchronize 机制.
     func synchronizedBag<T>( _ action: () -> T) -> T {
         objc_sync_enter(self)
         let result = action()

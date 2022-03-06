@@ -101,6 +101,7 @@ extension ObservableType {
         }
     }
 
+    // 不管上游的信号 Ele 是什么, 下游仅仅想要得到, 信号发送了.
     func mapToVoid() -> Observable<Void> {
         return map { _ in }
     }

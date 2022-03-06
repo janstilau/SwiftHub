@@ -23,8 +23,9 @@ extension PrimitiveSequenceType where Trait == SingleTrait {
     public static func zip<E1, E2>(_ source1: PrimitiveSequence<Trait, E1>, _ source2: PrimitiveSequence<Trait, E2>, resultSelector: @escaping (E1, E2) throws -> Element)
         -> PrimitiveSequence<Trait, Element> {
             return PrimitiveSequence(raw: Observable.zip(
-            source1.asObservable(), source2.asObservable(),
-                resultSelector: resultSelector)
+            source1.asObservable(),
+            source2.asObservable(),
+            resultSelector: resultSelector)
             )
     }
 }

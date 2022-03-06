@@ -195,6 +195,7 @@ extension User {
     }
 }
 
+// 将数据使用 JSON 的格式, 保存到了 KeyChain 里面. 
 extension User {
     func isMine() -> Bool {
         if let isViewer = isViewer {

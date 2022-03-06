@@ -11,6 +11,7 @@ import RxSwift
 import RxCocoa
 
 protocol SwiftHubAPI {
+    
     func downloadString(url: URL) -> Single<String>
     func downloadFile(url: URL, fileName: String?) -> Single<Void>
 
