@@ -277,7 +277,6 @@
 		C762C6911E1D5D6E00C09EBD /* GitHubAPI.swift in Sources */ = {isa = PBXBuildFile; fileRef = C762C68B1E1D5D6E00C09EBD /* GitHubAPI.swift */; };
 		C762C6921E1D5D6E00C09EBD /* Networking.swift in Sources */ = {isa = PBXBuildFile; fileRef = C762C68C1E1D5D6E00C09EBD /* Networking.swift */; };
 		C762C6941E1D5D6E00C09EBD /* Reachability.swift in Sources */ = {isa = PBXBuildFile; fileRef = C762C68E1E1D5D6E00C09EBD /* Reachability.swift */; };
-		D01F88DF3951CD64200F8EFA /* Pods_SwiftHubTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 9041AF0CD3CAF3CF6AD1E8E0 /* Pods_SwiftHubTests.framework */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -480,14 +479,11 @@
 		07FC33861FFFE68800D53888 /* Api.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Api.swift; sourceTree = "<group>"; };
 		07FDBC0A223D090C00D72AFC /* Repository.graphql */ = {isa = PBXFileReference; lastKnownFileType = text; path = Repository.graphql; sourceTree = "<group>"; };
 		3796635402BD18001EDA5A16 /* Pods-SwiftHubUITests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-SwiftHubUITests.release.xcconfig"; path = "Pods/Target Support Files/Pods-SwiftHubUITests/Pods-SwiftHubUITests.release.xcconfig"; sourceTree = "<group>"; };
-		3843260FF1EFDD3029A69CCB /* Pods-SwiftHubTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-SwiftHubTests.debug.xcconfig"; path = "Pods/Target Support Files/Pods-SwiftHubTests/Pods-SwiftHubTests.debug.xcconfig"; sourceTree = "<group>"; };
 		38EC4AD6252EF59E0092E2DC /* zh-Hant */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = "zh-Hant"; path = "zh-Hant.lproj/Localizable.strings"; sourceTree = "<group>"; };
 		3E6D5D7DF286987ECF4F8FDD /* Pods_SwiftHub.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_SwiftHub.framework; sourceTree = BUILT_PRODUCTS_DIR; };
-		79F049DC97D19D14F28BF40A /* Pods-SwiftHubTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-SwiftHubTests.release.xcconfig"; path = "Pods/Target Support Files/Pods-SwiftHubTests/Pods-SwiftHubTests.release.xcconfig"; sourceTree = "<group>"; };
 		7B5E2602E2BB58EBC51F39D8 /* Pods-SwiftHub.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-SwiftHub.debug.xcconfig"; path = "Pods/Target Support Files/Pods-SwiftHub/Pods-SwiftHub.debug.xcconfig"; sourceTree = "<group>"; };
 		7DCB88A802BEA0D429184566 /* Pods_SwiftHubUITests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_SwiftHubUITests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		7DCE0F2B67EC0E2BD4A13391 /* Pods-SwiftHub.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-SwiftHub.release.xcconfig"; path = "Pods/Target Support Files/Pods-SwiftHub/Pods-SwiftHub.release.xcconfig"; sourceTree = "<group>"; };
-		9041AF0CD3CAF3CF6AD1E8E0 /* Pods_SwiftHubTests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_SwiftHubTests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		A00871CE21A6E2BD006E5A2B /* Comment.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Comment.swift; sourceTree = "<group>"; };
 		A00C54C820E25B5A00DA5F98 /* StackView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StackView.swift; sourceTree = "<group>"; };
 		A017B3DA1E92995300E4FCED /* SplitViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SplitViewController.swift; sourceTree = "<group>"; };
@@ -616,7 +612,6 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				D01F88DF3951CD64200F8EFA /* Pods_SwiftHubTests.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -1046,7 +1041,6 @@
 			isa = PBXGroup;
 			children = (
 				3E6D5D7DF286987ECF4F8FDD /* Pods_SwiftHub.framework */,
-				9041AF0CD3CAF3CF6AD1E8E0 /* Pods_SwiftHubTests.framework */,
 				7DCB88A802BEA0D429184566 /* Pods_SwiftHubUITests.framework */,
 			);
 			name = Frameworks;
@@ -1316,8 +1310,6 @@
 			children = (
 				7B5E2602E2BB58EBC51F39D8 /* Pods-SwiftHub.debug.xcconfig */,
 				7DCE0F2B67EC0E2BD4A13391 /* Pods-SwiftHub.release.xcconfig */,
-				3843260FF1EFDD3029A69CCB /* Pods-SwiftHubTests.debug.xcconfig */,
-				79F049DC97D19D14F28BF40A /* Pods-SwiftHubTests.release.xcconfig */,
 				AB30C56D3A94C8B749FE468F /* Pods-SwiftHubUITests.debug.xcconfig */,
 				3796635402BD18001EDA5A16 /* Pods-SwiftHubUITests.release.xcconfig */,
 			);
@@ -1470,11 +1462,9 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = A094997D1E1D1CB700EFDE29 /* Build configuration list for PBXNativeTarget "SwiftHubTests" */;
 			buildPhases = (
-				EF957971E960BA0F59905F8B /* [CP] Check Pods Manifest.lock */,
 				A09499621E1D1CB700EFDE29 /* Sources */,
 				A09499631E1D1CB700EFDE29 /* Frameworks */,
 				A09499641E1D1CB700EFDE29 /* Resources */,
-				7773CB90ECB78E4DFBC424A6 /* [CP] Embed Pods Frameworks */,
 			);
 			buildRules = (
 			);
@@ -1524,7 +1514,7 @@
 			);
 			mainGroup = A09499491E1D1CB500EFDE29;
 			packageReferences = (
-				A003B32825A318360061EB1B /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */,
+				A003B32825A318360061EB1B /* XCRemoteSwiftPackageReference "firebase-ios-sdk.git" */,
 			);
 			productRefGroup = A09499531E1D1CB600EFDE29 /* Products */;
 			projectDirPath = "";
@@ -1760,32 +1750,6 @@
 			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-SwiftHub/Pods-SwiftHub-frameworks.sh\"\n";
 			showEnvVarsInLog = 0;
 		};
-		7773CB90ECB78E4DFBC424A6 /* [CP] Embed Pods Frameworks */ = {
-			isa = PBXShellScriptBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			inputPaths = (
-				"${PODS_ROOT}/Target Support Files/Pods-SwiftHubTests/Pods-SwiftHubTests-frameworks.sh",
-				"${BUILT_PRODUCTS_DIR}/RxSwift/RxSwift.framework",
-				"${BUILT_PRODUCTS_DIR}/Nimble/Nimble.framework",
-				"${BUILT_PRODUCTS_DIR}/Quick/Quick.framework",
-				"${BUILT_PRODUCTS_DIR}/RxAtomic/RxAtomic.framework",
-				"${BUILT_PRODUCTS_DIR}/RxBlocking/RxBlocking.framework",
-			);
-			name = "[CP] Embed Pods Frameworks";
-			outputPaths = (
-				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/RxSwift.framework",
-				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Nimble.framework",
-				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Quick.framework",
-				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/RxAtomic.framework",
-				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/RxBlocking.framework",
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-			shellPath = /bin/sh;
-			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-SwiftHubTests/Pods-SwiftHubTests-frameworks.sh\"\n";
-			showEnvVarsInLog = 0;
-		};
 		A024C7C421BAA83200FEA133 /* Crashlytics */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
@@ -1815,7 +1779,7 @@
 			);
 			name = R.swift;
 			outputPaths = (
-				$SRCROOT/SwiftHub/Resources/R.generated.swift,
+				"$SRCROOT/SwiftHub/Resources/R.generated.swift",
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
@@ -1833,24 +1797,6 @@
 			name = "[CP] Check Pods Manifest.lock";
 			outputPaths = (
 				"$(DERIVED_FILE_DIR)/Pods-SwiftHub-checkManifestLockResult.txt",
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-			shellPath = /bin/sh;
-			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
-			showEnvVarsInLog = 0;
-		};
-		EF957971E960BA0F59905F8B /* [CP] Check Pods Manifest.lock */ = {
-			isa = PBXShellScriptBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			inputPaths = (
-				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
-				"${PODS_ROOT}/Manifest.lock",
-			);
-			name = "[CP] Check Pods Manifest.lock";
-			outputPaths = (
-				"$(DERIVED_FILE_DIR)/Pods-SwiftHubTests-checkManifestLockResult.txt",
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
@@ -2273,7 +2219,6 @@
 		};
 		A094997E1E1D1CB700EFDE29 /* Debug */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = 3843260FF1EFDD3029A69CCB /* Pods-SwiftHubTests.debug.xcconfig */;
 			buildSettings = {
 				BUNDLE_LOADER = "$(TEST_HOST)";
 				DEVELOPMENT_TEAM = GAJJ4F72ZK;
@@ -2292,7 +2237,6 @@
 		};
 		A094997F1E1D1CB700EFDE29 /* Release */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = 79F049DC97D19D14F28BF40A /* Pods-SwiftHubTests.release.xcconfig */;
 			buildSettings = {
 				BUNDLE_LOADER = "$(TEST_HOST)";
 				DEVELOPMENT_TEAM = GAJJ4F72ZK;
@@ -2342,7 +2286,7 @@
 /* End XCConfigurationList section */
 
 /* Begin XCRemoteSwiftPackageReference section */
-		A003B32825A318360061EB1B /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */ = {
+		A003B32825A318360061EB1B /* XCRemoteSwiftPackageReference "firebase-ios-sdk.git" */ = {
 			isa = XCRemoteSwiftPackageReference;
 			repositoryURL = "https://github.com/firebase/firebase-ios-sdk.git";
 			requirement = {
@@ -2355,12 +2299,12 @@
 /* Begin XCSwiftPackageProductDependency section */
 		A003B32925A318360061EB1B /* FirebaseAnalytics */ = {
 			isa = XCSwiftPackageProductDependency;
-			package = A003B32825A318360061EB1B /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */;
+			package = A003B32825A318360061EB1B /* XCRemoteSwiftPackageReference "firebase-ios-sdk.git" */;
 			productName = FirebaseAnalytics;
 		};
 		A003B32B25A318360061EB1B /* FirebaseCrashlytics */ = {
 			isa = XCSwiftPackageProductDependency;
-			package = A003B32825A318360061EB1B /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */;
+			package = A003B32825A318360061EB1B /* XCRemoteSwiftPackageReference "firebase-ios-sdk.git" */;
 			productName = FirebaseCrashlytics;
 		};
 /* End XCSwiftPackageProductDependency section */

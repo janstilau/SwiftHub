@@ -52,6 +52,13 @@ class ViewController: UIViewController, Navigatable {
     
     let languageChanged = BehaviorRelay<Void>(value: ())
     
+    // 原本的事件处理, 从触发对应的方法, 变为了信号的触发.
+    // 信号触发后的操作, 可以在各个地方, 进行信号注册来进行绑定.
+    // 这种发射信号的方式, 带来的便利性就是, 带来了 1 对多的监听者机制.
+    
+    /*
+        PublishSubject<Void>() 这种方式, 就是想要接受通知, 不需要携带数据.
+     */
     let orientationEvent = PublishSubject<Void>()
     let motionShakeEvent = PublishSubject<Void>()
     
@@ -187,7 +194,9 @@ class ViewController: UIViewController, Navigatable {
         
         bannerView.load(GADRequest())
         
-        // 直接使用 LibsManager.shared.bannersEnabled 来注册 Banner View 的事件. 
+        /*
+         LibsManager.shared.bannersEnabled 会发射一个信号, 无论, 他在什么时候, 什么代码里面触发, 都会触发后面的监听逻辑.
+         */
         LibsManager.shared.bannersEnabled.asDriver().drive(onNext: { [weak self] (enabled) in
             guard let self = self else { return }
             self.bannerView.removeFromSuperview()
@@ -196,9 +205,12 @@ class ViewController: UIViewController, Navigatable {
                 self.stackView.addArrangedSubview(self.bannerView)
             }
         }).disposed(by: rx.disposeBag)
+        // rx.disposeBag 这个不是 rx 里面的官方实现.
         
+        // 摇晃信号的发送, 然后当前主体更改.
         motionShakeEvent.subscribe(onNext: { () in
             let theme = themeService.type.toggled()
+            // switch 会改变, 当前颜色的值, 然后发射一个信号.
             themeService.switch(theme)
         }).disposed(by: rx.disposeBag)
         
@@ -235,6 +247,7 @@ class ViewController: UIViewController, Navigatable {
         SVProgressHUD.dismiss()
     }
     
+    // 在接收到晃动事件之后, 仅仅做信号的发送处理.
     override func motionEnded(_ motion: UIEvent.EventSubtype, with event: UIEvent?) {
         if motion == .motionShake {
             motionShakeEvent.onNext(())

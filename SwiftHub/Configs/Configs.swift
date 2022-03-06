@@ -29,6 +29,9 @@ enum Keys {
     }
 }
 
+/*
+ 将, 所有全局使用的常量值, 通过类型进行约束. 
+ */
 struct Configs {
     
     struct App {

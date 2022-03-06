@@ -14,6 +14,7 @@ target 'SwiftHub' do
     # Rx Extensions
     pod 'RxDataSources', '~> 5.0'  # https://github.com/RxSwiftCommunity/RxDataSources
     pod 'RxSwiftExt', '~> 6.0'  # https://github.com/RxSwiftCommunity/RxSwiftExt
+    pod 'RxSwift', :path=>'localpods/RxSwift'
     pod 'NSObject+Rx', '~> 5.0'  # https://github.com/RxSwiftCommunity/NSObject-Rx
     pod 'RxViewController', '~> 2.0'  # https://github.com/devxoul/RxViewController
     pod 'RxGesture', '~> 4.0'  # https://github.com/RxSwiftCommunity/RxGesture
@@ -75,20 +76,6 @@ target 'SwiftHub' do
 
     # Ads
     pod 'Google-Mobile-Ads-SDK', '~> 8.0'
-    
-    target 'SwiftHubTests' do
-        inherit! :search_paths
-        # Pods for testing
-        pod 'Quick', '~> 4.0'  # https://github.com/Quick/Quick
-        pod 'Nimble', '~> 9.0'  # https://github.com/Quick/Nimble
-        pod 'RxAtomic', :modular_headers => true
-        pod 'RxBlocking'  # https://github.com/ReactiveX/RxSwift
-    end
-end
-
-target 'SwiftHubUITests' do
-    inherit! :search_paths
-    # Pods for testing
 end
 
 

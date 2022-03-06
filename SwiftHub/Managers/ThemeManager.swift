@@ -17,6 +17,7 @@ let globalStatusBarStyle = BehaviorRelay<UIStatusBarStyle>(value: .default)
 
 let themeService = ThemeType.service(initial: ThemeType.currentTheme())
 
+// 定义了一个协议, 来表达所有的用到的颜色.
 protocol Theme {
     var primary: UIColor { get }
     var primaryDark: UIColor { get }
@@ -34,6 +35,7 @@ protocol Theme {
     init(colorTheme: ColorTheme)
 }
 
+// 浅色的对于这个协议的实现.
 struct LightTheme: Theme {
     let primary = UIColor.Material.white
     let primaryDark = UIColor.Material.grey200
@@ -54,6 +56,7 @@ struct LightTheme: Theme {
     }
 }
 
+// 深色的, 对于这个协议的实现.
 struct DarkTheme: Theme {
     let primary = UIColor.Material.grey800
     let primaryDark = UIColor.Material.grey900
@@ -153,6 +156,7 @@ enum ColorTheme: Int {
 }
 
 enum ThemeType: ThemeProvider {
+    
     case light(color: ColorTheme)
     case dark(color: ColorTheme)
 
@@ -201,6 +205,7 @@ extension ThemeType {
         return theme
     }
 
+    // 单纯的存在了 UserDefault 里面了.
     func save() {
         let defaults = UserDefaults.standard
         defaults.set(self.isDark, forKey: "IsDarkKey")
