@@ -304,9 +304,10 @@ class SearchViewController: TableViewController {
         let searchTypeSegmentSelected = segmentedControl.segmentSelection.map { SearchTypeSegments(rawValue: $0)! }
         let trendingPerionSegmentSelected = trendingPeriodSegmentedControl.segmentSelection.map { TrendingPeriodSegments(rawValue: $0)! }
         let searchModeSegmentSelected = searchModeSegmentedControl.segmentSelection.map { SearchModeSegments(rawValue: $0)! }
-        
-        
         let refresh = Observable.of(Observable.just(()), headerRefreshTrigger, themeService.typeStream.mapToVoid()).merge()
+        
+        // 作者还专门写了 Transform 的机制, 将信号统一在 ViewModel 中进行变化.
+        // output 到底如何触发, 已经是难以追踪了. 最终, output 的信号, 是和当前的业务场景相关的. 
         let input = SearchViewModel.Input(headerRefresh: refresh,
                                           footerRefresh: footerRefreshTrigger,
                                           languageTrigger: languageChanged.asObservable(),

@@ -11,8 +11,7 @@ import RxCocoa
 import RxSwift
 import RxDataSources
 
-class SearchViewModel: ViewModel, ViewModelType {
-
+extension SearchViewModel {
     struct Input {
         let headerRefresh: Observable<Void>
         let footerRefresh: Observable<Void>
@@ -42,7 +41,12 @@ class SearchViewModel: ViewModel, ViewModelType {
         let hidesSearchModeSegment: Driver<Bool>
         let hidesSortLabel: Driver<Bool>
     }
+}
 
+class SearchViewModel: ViewModel, ViewModelType {
+    
+    // Rx 里面的 ViewModel, 各个属性更多的是一个信号源. 外界根据这些信号进行后续的绑定操作.
+    
     let searchType = BehaviorRelay<SearchTypeSegments>(value: .repositories)
     let trendingPeriod = BehaviorRelay<TrendingPeriodSegments>(value: .daily)
     let searchMode = BehaviorRelay<SearchModeSegments>(value: .trending)
@@ -246,6 +250,8 @@ class SearchViewModel: ViewModel, ViewModelType {
             }
         }).disposed(by: rx.disposeBag)
 
+        
+        // 这里复杂的操作, 真实令人厌烦. 
         Observable.combineLatest(trendingRepositoryElements, trendingUserElements, repositorySearchElements, userSearchElements, searchType, searchMode)
             .map { (trendingRepositories, trendingUsers, repositories, users, searchType, searchMode) -> [SearchSection] in
                 var elements: [SearchSection] = []
