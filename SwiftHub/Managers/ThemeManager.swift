@@ -78,6 +78,7 @@ struct DarkTheme: Theme {
 }
 
 enum ColorTheme: Int {
+    
     case red, pink, purple, deepPurple, indigo, blue, lightBlue, cyan, teal, green, lightGreen, lime, yellow, amber, orange, deepOrange, brown, gray, blueGray
 
     static let allValues = [red, pink, purple, deepPurple, indigo, blue, lightBlue, cyan, teal, green, lightGreen, lime, yellow, amber, orange, deepOrange, brown, gray, blueGray]
@@ -155,6 +156,11 @@ enum ColorTheme: Int {
     }
 }
 
+/*
+ Swift Enum 强大的表现之一.
+ 虽然里面的值, 还是仅仅是 两个 case. 但是, 因为可以在里面安放逻辑, 最终返回的数据, 可以是对应的类.
+ 然后使用返回的数据, 进行后续的操作. 
+ */
 enum ThemeType: ThemeProvider {
     
     case light(color: ColorTheme)
@@ -209,6 +215,7 @@ extension ThemeType {
     func save() {
         let defaults = UserDefaults.standard
         defaults.set(self.isDark, forKey: "IsDarkKey")
+        
         switch self {
         case .light(let color): defaults.set(color.rawValue, forKey: "ThemeKey")
         case .dark(let color): defaults.set(color.rawValue, forKey: "ThemeKey")

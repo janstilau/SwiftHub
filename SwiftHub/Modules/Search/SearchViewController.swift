@@ -17,6 +17,7 @@ private let repositoryReuseIdentifier = R.reuseIdentifier.repositoryCell
 private let userReuseIdentifier = R.reuseIdentifier.userCell
 
 enum SearchTypeSegments: Int {
+    
     case repositories, users
     
     var title: String {
@@ -144,11 +145,15 @@ class SearchViewController: TableViewController {
         let titles = [SearchTypeSegments.repositories.title, SearchTypeSegments.users.title]
         let images = [R.image.icon_cell_badge_repository()!, R.image.icon_cell_badge_user()!]
         let selectedImages = [R.image.icon_cell_badge_repository()!, R.image.icon_cell_badge_user()!]
-        let view = SegmentedControl(sectionImages: images, sectionSelectedImages: selectedImages, titlesForSections: titles)
+        let view = SegmentedControl(sectionImages: images,
+                                    sectionSelectedImages: selectedImages,
+                                    titlesForSections: titles)
         view.selectedSegmentIndex = 0
         view.snp.makeConstraints({ (make) in
             make.width.equalTo(220)
         })
+        view.addBorderLine()
+        view.addTitleView("TopSegment")
         return view
     }()
     
@@ -157,16 +162,25 @@ class SearchViewController: TableViewController {
         let items = [TrendingPeriodSegments.daily.title, TrendingPeriodSegments.weekly.title, TrendingPeriodSegments.montly.title]
         let view = SegmentedControl(sectionTitles: items)
         view.selectedSegmentIndex = 0
+        view.addBorderLine()
+        view.addTitleView("PerideSegment")
         return view
     }()
     
-    let searchModeView = View()
+    let searchModeView: View = {
+        let view =  View()
+        view.addBorderLine()
+        view.addTitleView("SearchModeView")
+        return view
+    }()
+    
     lazy var searchModeSegmentedControl: SegmentedControl = {
         let titles = [SearchModeSegments.trending.title, SearchModeSegments.search.title]
         let images = [R.image.icon_cell_badge_trending()!, R.image.icon_cell_badge_search()!]
         let selectedImages = [R.image.icon_cell_badge_trending()!, R.image.icon_cell_badge_search()!]
         let view = SegmentedControl(sectionImages: images, sectionSelectedImages: selectedImages, titlesForSections: titles)
         view.selectedSegmentIndex = 0
+        view.backgroundColor = UIColor.red.withAlphaComponent(0.3)
         return view
     }()
     
@@ -284,11 +298,14 @@ class SearchViewController: TableViewController {
     
     override func bindViewModel() {
         super.bindViewModel()
+        
         guard let viewModel = viewModel as? SearchViewModel else { return }
         
         let searchTypeSegmentSelected = segmentedControl.segmentSelection.map { SearchTypeSegments(rawValue: $0)! }
         let trendingPerionSegmentSelected = trendingPeriodSegmentedControl.segmentSelection.map { TrendingPeriodSegments(rawValue: $0)! }
         let searchModeSegmentSelected = searchModeSegmentedControl.segmentSelection.map { SearchModeSegments(rawValue: $0)! }
+        
+        
         let refresh = Observable.of(Observable.just(()), headerRefreshTrigger, themeService.typeStream.mapToVoid()).merge()
         let input = SearchViewModel.Input(headerRefresh: refresh,
                                           footerRefresh: footerRefreshTrigger,

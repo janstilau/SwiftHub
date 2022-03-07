@@ -115,3 +115,34 @@ extension UIView {
         return border
     }
 }
+
+extension UIView {
+    
+    func addBorderLine() {
+        self.layer.borderColor = UIColor.random.cgColor
+        self.layer.borderWidth = 1
+    }
+    
+    func addBorderLine(_ color: UIColor, width: Double = 1) {
+        self.layer.borderColor = color.cgColor
+        self.layer.borderWidth = width
+    }
+    
+    func addTitleView(_ title: String = "") {
+        self.viewWithTag(90990)?.removeFromSuperview()
+        let name: String
+        if title.isEmpty {
+            name = NSStringFromClass(type(of: self))
+        } else {
+            name = title
+        }
+        let label = UILabel()
+        label.text = name
+        label.font = .systemFont(ofSize: 10)
+        label.textColor = .red
+        label.tag = 90990
+        self.addSubview(label)
+        label.sizeToFit()
+        label.kr_origin = CGPoint.zero
+    }
+}

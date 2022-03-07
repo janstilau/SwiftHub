@@ -52,6 +52,7 @@ struct Configs {
         static let githubSkylineBaseUrl = "https://skyline.github.com"
     }
     
+    // UI 布局相关的配置.
     struct BaseDimensions {
         static let inset: CGFloat = 8
         static let tabBarHeight: CGFloat = 58
@@ -65,6 +66,7 @@ struct Configs {
         static let segmentedControlHeight: CGFloat = 40
     }
     
+    // 应用存储相关的配置. 
     struct Path {
         static let Documents = NSSearchPathForDirectoriesInDomains(.documentDirectory, .userDomainMask, true)[0]
         static let Tmp = NSTemporaryDirectory()

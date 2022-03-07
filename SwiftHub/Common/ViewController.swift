@@ -145,7 +145,10 @@ class ViewController: UIViewController, Navigatable {
                 logDebug("Motion Status changed")
             }).disposed(by: rx.disposeBag)
         
-        // Noti 的 Post, 会引起 languageChanged 的信号发送,
+        /*
+         每个 VC, 都有自己的 languageChanged 信号源, 在 LCLLanguageChangeNotification 变化之后, 就进行 languageChanged 信号的发送.
+         在每个子类里面, 对 languageChanged 信号进行注册, 然后在每个信号发送之后, 进行自己的 UI 变化. 
+         */
         NotificationCenter.default
             .rx.notification(NSNotification.Name(LCLLanguageChangeNotification))
             .subscribe { [weak self] (event) in
@@ -224,6 +227,12 @@ class ViewController: UIViewController, Navigatable {
         updateUI()
     }
     
+    /*
+     rx 复杂的地方就在这里.
+     信号暴露出去, 可能会被 Operator 进行变形, 变为和业务更加相关的信号源.
+     但是这种变化, 会让代码的复杂度激增. 因为返回的结果, 可能会再次进行变换.
+     当, 一件事发生了之后, 是否会引起特定的事件, 会引起多少事件, 会不会被存储起来, 在另外一个信号来临时触发后续逻辑, 都包含在庞杂的 Operation 的操作之后了.
+     */
     func bindViewModel() {
         viewModel?.loading.asObservable().bind(to: isLoading).disposed(by: rx.disposeBag)
         viewModel?.parsedError.asObservable().bind(to: error).disposed(by: rx.disposeBag)
