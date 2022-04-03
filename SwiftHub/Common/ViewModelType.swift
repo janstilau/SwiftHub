@@ -20,6 +20,10 @@ protocol ViewModelType {
     associatedtype Input
     associatedtype Output
 
+    /*
+     这个协议的作用, 就是添加了一个统一的方法, ViewModel 需要在这个方法里面, 进行信号的转换处理.
+     各个 VC, 需要在 tranfrom 前组装自己的 Input 类型, 然后在自己的 ViewModel 里面进行转化, VC 则需要在转换后, 使用 output 进行业务逻辑的处理. 
+     */
     func transform(input: Input) -> Output
 }
 
@@ -54,6 +58,11 @@ class ViewModel: NSObject {
             return nil
         }.filterNil().bind(to: parsedError).disposed(by: rx.disposeBag)
 
+        /*
+         直接在自己内部, 注册了错误处理.
+         信号发射这种模型的好处, 就是监听这件事, 变的容易.
+         不需要一个统一的入口, 来做分发这件事. 业务模块, 想要在信号发送的时候做一些事情, 在业务模块进行 Connect 就好了.
+         */
         parsedError.subscribe(onNext: { (error) in
             logError("\(error)")
         }).disposed(by: rx.disposeBag)

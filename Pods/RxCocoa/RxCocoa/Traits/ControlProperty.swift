@@ -7,6 +7,7 @@
 //
 
 import RxSwift
+import Foundation
 
 /// Protocol that enables extension of `ControlProperty`.
 public protocol ControlPropertyType : ObservableType, ObserverType {
@@ -110,7 +111,6 @@ extension ControlPropertyType where Element == String? {
     /// Transforms control property of type `String?` into control property of type `String`.
     public var orEmpty: ControlProperty<String> {
         let original: ControlProperty<String?> = self.asControlProperty()
-
         let values: Observable<String> = original.values.map { $0 ?? "" }
         let valueSink: AnyObserver<String> = original.valueSink.mapObserver { $0 }
         return ControlProperty<String>(values: values, valueSink: valueSink)

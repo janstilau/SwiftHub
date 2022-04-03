@@ -27,7 +27,6 @@ class Label: UILabel {
     func makeUI() {
         layer.masksToBounds = true
         numberOfLines = 1
-//        cornerRadius = Configs.BaseDimensions.cornerRadius
         updateUI()
     }
 

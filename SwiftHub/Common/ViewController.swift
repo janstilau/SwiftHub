@@ -87,6 +87,8 @@ class ViewController: UIViewController, Navigatable {
         view.rootViewController = self
         view.adUnitID = Keys.adMob.apiKey
         view.hero.id = "BannerView"
+        view.addBorderLine(color: .blue, width: 1)
+        view.addTitleView("BannerView")
         return view
     }()
     
@@ -96,6 +98,7 @@ class ViewController: UIViewController, Navigatable {
         let view = View()
         self.view.addSubview(view)
         view.snp.makeConstraints { (make) in
+            // 这里使用的 safeAreaLayoutGuide, 所以自动就会有 上下 Margin 的存在.
             make.edges.equalTo(self.view.safeAreaLayoutGuide)
         }
         return view
@@ -110,6 +113,8 @@ class ViewController: UIViewController, Navigatable {
         view.snp.makeConstraints({ (make) in
             make.edges.equalToSuperview()
         })
+        view.addTitleView("StackView")
+        view.addBorderLine(color: .green, width: 1)
         return view
     }()
     

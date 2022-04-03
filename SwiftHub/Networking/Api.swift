@@ -10,6 +10,9 @@ import Foundation
 import RxSwift
 import RxCocoa
 
+/*
+ 将,
+ */
 protocol SwiftHubAPI {
     
     func downloadString(url: URL) -> Single<String>

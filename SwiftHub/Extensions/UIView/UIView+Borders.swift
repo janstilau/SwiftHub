@@ -118,12 +118,7 @@ extension UIView {
 
 extension UIView {
     
-    func addBorderLine() {
-        self.layer.borderColor = UIColor.random.cgColor
-        self.layer.borderWidth = 1
-    }
-    
-    func addBorderLine(_ color: UIColor, width: Double = 1) {
+    func addBorderLine(color: UIColor = UIColor.random, width: Double = 1) {
         self.layer.borderColor = color.cgColor
         self.layer.borderWidth = width
     }

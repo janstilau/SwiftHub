@@ -188,6 +188,7 @@ class SearchViewController: TableViewController {
         let view = Label()
         view.font = view.font.withSize(14)
         view.leftTextInset = self.inset
+        view.backgroundColor = UIColor.purple
         return view
     }()
     
@@ -196,10 +197,11 @@ class SearchViewController: TableViewController {
         view.font = view.font.withSize(14)
         view.textAlignment = .right
         view.rightTextInset = self.inset
+        view.backgroundColor = UIColor.green
         return view
     }()
     
-    lazy var labelsStackView: StackView = {
+    lazy var searchResultTipStackView: StackView = {
         let view = StackView(arrangedSubviews: [self.totalCountLabel, self.sortLabel])
         view.axis = .horizontal
         return view
@@ -219,16 +221,10 @@ class SearchViewController: TableViewController {
         navigationItem.titleView = segmentedControl
         navigationItem.rightBarButtonItem = rightBarButton
         
-        languageChanged.subscribe(onNext: { [weak self] () in
-            self?.searchBar.placeholder = R.string.localizable.searchSearchBarPlaceholder.key.localized()
-            self?.segmentedControl.sectionTitles = [SearchTypeSegments.repositories.title,
-                                                    SearchTypeSegments.users.title]
-            self?.trendingPeriodSegmentedControl.sectionTitles = [TrendingPeriodSegments.daily.title,
-                                                                  TrendingPeriodSegments.weekly.title,
-                                                                  TrendingPeriodSegments.montly.title]
-            self?.searchModeSegmentedControl.sectionTitles = [SearchModeSegments.trending.title,
-                                                              SearchModeSegments.search.title]
-        }).disposed(by: rx.disposeBag)
+        stackView.insertArrangedSubview(searchResultTipStackView, at: 0)
+        stackView.insertArrangedSubview(trendingPeriodView, at: 0)
+        stackView.insertArrangedSubview(searchBar, at: 0)
+        stackView.addArrangedSubview(searchModeView)
         
         trendingPeriodView.addSubview(trendingPeriodSegmentedControl)
         trendingPeriodSegmentedControl.snp.makeConstraints { (make) in
@@ -241,12 +237,7 @@ class SearchViewController: TableViewController {
             make.edges.equalToSuperview().inset(self.inset)
         }
         
-        stackView.insertArrangedSubview(labelsStackView, at: 0)
-        stackView.insertArrangedSubview(trendingPeriodView, at: 0)
-        stackView.insertArrangedSubview(searchBar, at: 0)
-        stackView.addArrangedSubview(searchModeView)
-        
-        labelsStackView.snp.makeConstraints { (make) in
+        searchResultTipStackView.snp.makeConstraints { (make) in
             make.height.equalTo(30)
         }
         
@@ -296,8 +287,20 @@ class SearchViewController: TableViewController {
         }).disposed(by: rx.disposeBag)
     }
     
+    // 一个 Bind, 将所有的义务逻辑包装其中.
     override func bindViewModel() {
         super.bindViewModel()
+        
+        languageChanged.subscribe(onNext: { [weak self] () in
+            self?.searchBar.placeholder = R.string.localizable.searchSearchBarPlaceholder.key.localized()
+            self?.segmentedControl.sectionTitles = [SearchTypeSegments.repositories.title,
+                                                    SearchTypeSegments.users.title]
+            self?.trendingPeriodSegmentedControl.sectionTitles = [TrendingPeriodSegments.daily.title,
+                                                                  TrendingPeriodSegments.weekly.title,
+                                                                  TrendingPeriodSegments.montly.title]
+            self?.searchModeSegmentedControl.sectionTitles = [SearchModeSegments.trending.title,
+                                                              SearchModeSegments.search.title]
+        }).disposed(by: rx.disposeBag)
         
         guard let viewModel = viewModel as? SearchViewModel else { return }
         
@@ -368,7 +371,11 @@ class SearchViewController: TableViewController {
         
         output.hidesTrendingPeriodSegment.drive(trendingPeriodView.rx.isHidden).disposed(by: rx.disposeBag)
         output.hidesSearchModeSegment.drive(searchModeView.rx.isHidden).disposed(by: rx.disposeBag)
-        output.hidesSortLabel.drive(labelsStackView.rx.isHidden).disposed(by: rx.disposeBag)
+        
+        /*
+         output 里面, hidesSortLabel 专门被计算出来, 在 VC 里面, 直接使用进行 View 的属性的绑定.
+         */
+        output.hidesSortLabel.drive(searchResultTipStackView.rx.isHidden).disposed(by: rx.disposeBag)
         output.hidesSortLabel.drive(totalCountLabel.rx.isHidden).disposed(by: rx.disposeBag)
         output.hidesSortLabel.drive(sortLabel.rx.isHidden).disposed(by: rx.disposeBag)
         
@@ -384,7 +391,7 @@ class SearchViewController: TableViewController {
         output.totalCountText.drive(totalCountLabel.rx.text).disposed(by: rx.disposeBag)
         output.sortText.drive(sortLabel.rx.text).disposed(by: rx.disposeBag)
         
-        viewModel.searchMode.asDriver().drive(onNext: { [weak self] (searchMode) in
+        viewModel.searchModePublisher.asDriver().drive(onNext: { [weak self] (searchMode) in
             guard let self = self else { return }
             self.searchModeSegmentedControl.selectedSegmentIndex = UInt(searchMode.rawValue)
             
