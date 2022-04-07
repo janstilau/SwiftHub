@@ -24,6 +24,8 @@ class ViewController: UIViewController, Navigatable {
         self.viewModel = viewModel
         self.navigator = navigator
         super.init(nibName: nil, bundle: nil)
+        
+        debugPrint("ViewController Create \(type(of: self))")
     }
     
     required init?(coder aDecoder: NSCoder) {
