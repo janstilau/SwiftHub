@@ -11,11 +11,14 @@ import RxSwift
 import RxCocoa
 
 /*
- 将,
+ 将, 所有的网络请求, 都集中到了一个地方 .
  */
 protocol SwiftHubAPI {
     
     func downloadString(url: URL) -> Single<String>
+    // 这种, next+complete 或者 error 的, 就是使用 Single.
+    // 在这个库里面, 大量的使用.
+    // 应该说, 所有的网络请求, 都使用的 Single.
     func downloadFile(url: URL, fileName: String?) -> Single<Void>
 
     // MARK: - Authentication is optional

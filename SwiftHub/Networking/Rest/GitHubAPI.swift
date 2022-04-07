@@ -20,6 +20,8 @@ private let assetDir: URL = {
     return directoryURLs.first ?? URL(fileURLWithPath: NSTemporaryDirectory())
 }()
 
+// 将, 所有的网络请求需要的参数, 使用 case 进行了包装. 大量的使用了 case 关联特性.
+// 好处是, 所有的网络请求, 都有着强类型, 必须是 case 里面事先定义的才可以. 
 enum GithubAPI {
     case download(url: URL, fileName: String?)
 

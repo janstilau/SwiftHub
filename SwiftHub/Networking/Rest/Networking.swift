@@ -14,7 +14,7 @@ import Alamofire
 class OnlineProvider<Target> where Target: Moya.TargetType {
     fileprivate let online: Observable<Bool>
     fileprivate let provider: MoyaProvider<Target>
-
+    
     init(endpointClosure: @escaping MoyaProvider<Target>.EndpointClosure = MoyaProvider<Target>.defaultEndpointMapping,
          requestClosure: @escaping MoyaProvider<Target>.RequestClosure = MoyaProvider<Target>.defaultRequestMapping,
          stubClosure: @escaping MoyaProvider<Target>.StubClosure = MoyaProvider<Target>.neverStub,
@@ -25,7 +25,7 @@ class OnlineProvider<Target> where Target: Moya.TargetType {
         self.online = online
         self.provider = MoyaProvider(endpointClosure: endpointClosure, requestClosure: requestClosure, stubClosure: stubClosure, session: session, plugins: plugins, trackInflights: trackInflights)
     }
-
+    
     func request(_ token: Target) -> Observable<Moya.Response> {
         let actualRequest = provider.rx.request(token)
         return online
@@ -50,14 +50,14 @@ class OnlineProvider<Target> where Target: Moya.TargetType {
                             }
                         }
                     })
-        }
+                        }
     }
 }
 
 protocol NetworkingType {
     associatedtype T: TargetType, ProductAPIType
     var provider: OnlineProvider<T> { get }
-
+    
     static func defaultNetworking() -> Self
     static func stubbingNetworking() -> Self
 }
@@ -65,15 +65,15 @@ protocol NetworkingType {
 struct GithubNetworking: NetworkingType {
     typealias T = GithubAPI
     let provider: OnlineProvider<T>
-
+    
     static func defaultNetworking() -> Self {
         return GithubNetworking(provider: newProvider(plugins))
     }
-
+    
     static func stubbingNetworking() -> Self {
         return GithubNetworking(provider: OnlineProvider(endpointClosure: endpointsClosure(), requestClosure: GithubNetworking.endpointResolver(), stubClosure: MoyaProvider.immediatelyStub, online: .just(true)))
     }
-
+    
     func request(_ token: T) -> Observable<Moya.Response> {
         let actualRequest = self.provider.request(token)
         return actualRequest
@@ -83,15 +83,15 @@ struct GithubNetworking: NetworkingType {
 struct TrendingGithubNetworking: NetworkingType {
     typealias T = TrendingGithubAPI
     let provider: OnlineProvider<T>
-
+    
     static func defaultNetworking() -> Self {
         return TrendingGithubNetworking(provider: newProvider(plugins))
     }
-
+    
     static func stubbingNetworking() -> Self {
         return TrendingGithubNetworking(provider: OnlineProvider(endpointClosure: endpointsClosure(), requestClosure: TrendingGithubNetworking.endpointResolver(), stubClosure: MoyaProvider.immediatelyStub, online: .just(true)))
     }
-
+    
     func request(_ token: T) -> Observable<Moya.Response> {
         let actualRequest = self.provider.request(token)
         return actualRequest
@@ -101,15 +101,15 @@ struct TrendingGithubNetworking: NetworkingType {
 struct CodetabsNetworking: NetworkingType {
     typealias T = CodetabsApi
     let provider: OnlineProvider<T>
-
+    
     static func defaultNetworking() -> Self {
         return CodetabsNetworking(provider: newProvider(plugins))
     }
-
+    
     static func stubbingNetworking() -> Self {
         return CodetabsNetworking(provider: OnlineProvider(endpointClosure: endpointsClosure(), requestClosure: CodetabsNetworking.endpointResolver(), stubClosure: MoyaProvider.immediatelyStub, online: .just(true)))
     }
-
+    
     func request(_ token: T) -> Observable<Moya.Response> {
         let actualRequest = self.provider.request(token)
         return actualRequest
@@ -120,16 +120,16 @@ extension NetworkingType {
     static func endpointsClosure<T>(_ xAccessToken: String? = nil) -> (T) -> Endpoint where T: TargetType, T: ProductAPIType {
         return { target in
             let endpoint = MoyaProvider.defaultEndpointMapping(for: target)
-
+            
             // Sign all non-XApp, non-XAuth token requests
             return endpoint
         }
     }
-
+    
     static func APIKeysBasedStubBehaviour<T>(_: T) -> Moya.StubBehavior {
         return .never
     }
-
+    
     static var plugins: [PluginType] {
         var plugins: [PluginType] = []
         if Configs.Network.loggingEnabled == true {
@@ -137,7 +137,7 @@ extension NetworkingType {
         }
         return plugins
     }
-
+    
     // (Endpoint<Target>, NSURLRequest -> Void) -> Void
     static func endpointResolver() -> MoyaProvider<T>.RequestClosure {
         return { (endpoint, closure) in
@@ -163,7 +163,7 @@ private func newProvider<T>(_ plugins: [PluginType], xAccessToken: String? = nil
 
 func stubbedResponse(_ filename: String) -> Data! {
     @objc class TestClass: NSObject { }
-
+    
     let bundle = Bundle(for: TestClass.self)
     let path = bundle.path(forResource: filename, ofType: "json")
     return (try? Data(contentsOf: URL(fileURLWithPath: path!)))

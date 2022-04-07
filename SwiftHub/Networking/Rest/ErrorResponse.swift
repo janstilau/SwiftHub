@@ -9,7 +9,9 @@
 import Foundation
 import ObjectMapper
 
+// Mappable 这个没使用过.
 struct ErrorResponse: Mappable {
+    
     var message: String?
     var errors: [ErrorModel] = []
     var documentationUrl: String?
