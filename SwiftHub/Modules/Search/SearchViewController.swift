@@ -136,6 +136,12 @@ enum SortUserItems: Int {
 
 class SearchViewController: TableViewController {
     
+    let sortRepositoryItem = BehaviorRelay(value: SortRepositoryItems.bestMatch)
+    let sortUserItem = BehaviorRelay(value: SortUserItems.bestMatch)
+    
+    /*
+     ViewController 的职责之一, View 的构建.
+     */
     lazy var rightBarButton: BarButtonItem = {
         let view = BarButtonItem(image: R.image.icon_navigation_language(), style: .done, target: nil, action: nil)
         return view
@@ -212,9 +218,9 @@ class SearchViewController: TableViewController {
         return view
     }()
     
-    let sortRepositoryItem = BehaviorRelay(value: SortRepositoryItems.bestMatch)
-    let sortUserItem = BehaviorRelay(value: SortUserItems.bestMatch)
-    
+    /*
+     ViewController 的职责之一, View 的布局.
+     */
     override func makeUI() {
         super.makeUI()
         
@@ -263,6 +269,8 @@ class SearchViewController: TableViewController {
         totalCountLabel.theme.textColor = themeService.attribute { $0.text }
         sortLabel.theme.textColor = themeService.attribute { $0.text }
         
+        // themeService 在这里起到的, 更像是全局通知的作用.
+        // 在每个 VC 里面, 根据这个全局通知, 来进行自己展示的 View 的颜色切换.
         themeService.typeStream.subscribe(onNext: { [weak self] (themeType) in
             let theme = themeType.associatedObject
             self?.sortDropDown.dimmedBackgroundColor = theme.primaryDark.withAlphaComponent(0.5)
@@ -287,10 +295,12 @@ class SearchViewController: TableViewController {
         }).disposed(by: rx.disposeBag)
     }
     
-    // 一个 Bind, 将所有的义务逻辑包装其中.
     override func bindViewModel() {
         super.bindViewModel()
         
+        /*
+         ViewModel 的数据改变, 引发 View 的改变.
+         */
         languageChanged.subscribe(onNext: { [weak self] () in
             self?.searchBar.placeholder = R.string.localizable.searchSearchBarPlaceholder.key.localized()
             self?.segmentedControl.sectionTitles = [SearchTypeSegments.repositories.title,
@@ -310,7 +320,7 @@ class SearchViewController: TableViewController {
         let refresh = Observable.of(Observable.just(()), headerRefreshTrigger, themeService.typeStream.mapToVoid()).merge()
         
         // 作者还专门写了 Transform 的机制, 将信号统一在 ViewModel 中进行变化.
-        // output 到底如何触发, 已经是难以追踪了. 最终, output 的信号, 是和当前的业务场景相关的. 
+        // output 到底如何触发, 已经是难以追踪了. 最终, output 的信号, 是和当前的业务场景相关的.
         let input = SearchViewModel.Input(headerRefresh: refresh,
                                           footerRefresh: footerRefreshTrigger,
                                           languageTrigger: languageChanged.asObservable(),

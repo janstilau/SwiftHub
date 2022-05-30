@@ -72,6 +72,9 @@ class SearchViewModel: ViewModel, ViewModelType {
         let userSelected = PublishSubject<User>()
         let dismissKeyboard = input.selection.mapToVoid()
         
+        /*
+         View 的信号改变, 绑定到了 ViewModel 上, 本质上是 ViewAction 触发了 IntentAction.
+         */
         input.searchTypeSegmentSelection.bind(to: searchType).disposed(by: rx.disposeBag)
         input.trendingPeriodSegmentSelection.bind(to: trendingPeriod).disposed(by: rx.disposeBag)
         input.searchModeSelection.bind(to: searchModePublisher).disposed(by: rx.disposeBag)
